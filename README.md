@@ -1,8 +1,22 @@
-# Rails::Rack::Session::Cookie
+# RailsRackSessionCookie
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rails/rack/session/cookie`. To experiment with that code, run `bin/console` for an interactive prompt.
+By default, Rails 4+ comes with its own custom cookie storage mechanism that
+encrypts cookie values. It is incompatible with Rack::Session::Cookie and only
+necessary if you're storing sensitive information in your cookies (an
+antipattern). 
 
-TODO: Delete this and the text above, and describe your gem
+This gem allows you to seemlessly share a cookie among rack-based web
+applications, provided they all use the built-in Rack::Session::Storage.
+
+## How does it work?
+
+This simply replaces the ActionDispatch cookie middleware with
+Rack::Session::Storage. Unfortunately you cannot run ActionDispatch's cookie
+middleware alongside Rack::Session::Storage because ActionDispatch overwrites
+`env['rack.session']` with its custom cookie jar.
+
+By using this gem, all your rack and rails apps must use Rack::Session::Storage
+in order to share cookies.
 
 ## Installation
 
@@ -22,7 +36,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+This is a seamless drop-in as Rails' interface with the cookie store is
+compatible with Rack::Session::Cookie.
 
 ## Development
 
@@ -32,5 +47,5 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rails-rack-session-cookie.
+Bug reports and pull requests are welcome on GitHub at https://github.com/faradayio/rails-rack-session-cookie.
 
