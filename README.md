@@ -42,7 +42,6 @@ In config/application.rb:
 config.rack_session = {
   store: :cookie,
   key: '_my_app',
-  secret
   domain: '.example.com'
 }
 ```
