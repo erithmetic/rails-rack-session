@@ -26,8 +26,6 @@ Available options: :cookie, :pool, :memcache
 
       cfg[:secret] ||= app.secrets[:secret_key_base]
 
-      puts cfg.inspect
-
       session_class = Rack::Session.const_get cfg.delete(:store).to_s.camelize
 
       app.middleware.insert_before ActionDispatch::Cookies, session_class, cfg
