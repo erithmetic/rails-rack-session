@@ -50,6 +50,10 @@ The `:store` key corresponds to the name of a `Rack::Session` class, e.g. `Cooki
 the `:secret` key is inferred from your app's `secret_key_base`, usually set in
 `config/secrets.yml`.
 
+An optional `:coder` key can be given. By default, this is the
+Rack::Session::Cookie::Base64::JSON coder that serializes session data as JSON.
+This is more secure than Rack::Session's default marshalled hash.
+
 Use the same keys used to configure Rack::Session. For cookie store, see
 http://www.rubydoc.info/gems/rack/Rack/Session/Cookie
 

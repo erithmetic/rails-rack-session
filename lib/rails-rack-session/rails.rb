@@ -25,6 +25,7 @@ Available options: :cookie, :pool, :memcache
       end
 
       cfg[:secret] ||= app.secrets[:secret_key_base]
+      cfg[:coder] ||= Rack::Session::Cookie::Base64::JSON.new
 
       session_class = Rack::Session.const_get cfg.delete(:store).to_s.camelize
 
