@@ -6,7 +6,7 @@ necessary if you're storing sensitive information in your cookies (an
 antipattern). 
 
 This gem allows you to seemlessly share a cookie among rack-based web
-applications, provided they all use the built-in Rack::Session::Storage.
+applications, provided they all use the built-in Rack::Session middleware.
 
 ## How does it work?
 
@@ -23,7 +23,7 @@ in order to share cookies.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'rails-rack-session-cookie'
+gem 'rails-rack-session'
 ```
 
 And then execute:
@@ -32,7 +32,27 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install rails-rack-session-cookie
+    $ gem install rails-rack-session
+
+## Configuration
+
+In config/application.rb:
+
+```
+config.rack_session = {
+  store: :cookie,
+  key: '_my_app',
+  secret
+  domain: '.example.com'
+}
+```
+
+The `:store` key corresponds to the name of a `Rack::Session` class, e.g. `Cookie`.
+the `:secret` key is inferred from your app's `secret_key_base`, usually set in
+`config/secrets.yml`.
+
+Use the same keys used to configure Rack::Session. For cookie store, see
+http://www.rubydoc.info/gems/rack/Rack/Session/Cookie
 
 ## Usage
 

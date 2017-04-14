@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'rails-rack-session-cookie/version'
+require 'rails-rack-session/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "rails-rack-session-cookie"
-  spec.version       = Rails::Rack::Session::Cookie::VERSION
+  spec.name          = "rails-rack-session"
+  spec.version       = RailsRackSession::VERSION
   spec.authors       = ["Derek Kastner"]
   spec.email         = ["dkastner@gmail.com"]
 
   spec.summary       = %q{Use classic Rack::Session::Cookie in Rails}
-  spec.description   = %q{Enable cookies in Rails that are compatible with standard rack apps}
-  spec.homepage      = "http://github.com/dkastner/rails-rack-session-cookie"
+  spec.description   = %q{Enable sessions/cookies in Rails that are compatible with standard rack apps}
+  spec.homepage      = "http://github.com/dkastner/rails-rack-session"
 
   spec.files         = Dir['README.md', 'lib/**/*']
   spec.require_paths = ["lib"]
